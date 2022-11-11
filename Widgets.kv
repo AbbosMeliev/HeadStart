@@ -1,0 +1,295 @@
+<MyLayout>
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    AnchorLayout:
+        size: root.width, root.height
+
+        FloatLayout:
+            size: (270,480)
+            size_hint: (None, None)
+
+            Label:
+                id: main_text
+                text: f"Welcome to "
+                font_size: 16
+                pos_hint: {"center_x":-1, "center_y":.67}
+                color: 0,0,0,0
+                halign: 'left'
+            Label:
+                id: second_main
+                text: f"Testing System"
+                bold: True
+                font_size: 20
+                pos_hint: {"center_x":1, "center_y":0.635}
+                color: 0,0,0,0
+                halign: 'center'
+            Label:
+                id: Info
+                text: f"We are pleased to see you here!\nThis test includes 4 steps,\nFirst you should fill forms about yourself,\nSecond step is General English test,\nThird part is Reading section,\nFourth is Listening"
+                font_size: 12
+                pos_hint: {"center_x": -0.1, "center_y": 0.5}
+                color: 0,0,0,0
+                halign: 'left'
+
+
+            StrokeButton:
+                text: "Start test"
+                on_release: root.Animate_it(self)
+                size_hint: .3, .075
+                pos_hint: {"x": .35, "y": 0.45}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 1
+            StrokeButton:
+                id: Restart
+                text: "Restart"
+                on_release: root.restart(self)
+                on_release: app.stop()
+                size_hint: .3, .075
+                pos_hint: {"x": -1, "y": 0.1}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+            Label:
+                id : Grammar_Score
+                text : "General Test Score : 0"
+                pos_hint: {"x": 1, "y": 0}
+                color: 0,0,0,0
+                font_size: 18
+            Label:
+                id : Name
+                text : f"Name"
+                pos_hint: {"x": -1, "y": 0.125}
+                color: 0.1, .55, .05,0
+                font_size: 36
+            StrokeButton:
+                id: Step1button
+                text: "Step 1"
+                on_release: root.Step1(self)
+                size_hint: .3, .075
+                pos_hint: {"center_x": 3, "center_y": 0.3}
+                background_color: 0,0,0,0
+                back_color : 0.1, .55, .05, 0
+            StrokeButton:
+                id: Step2
+                text: "Step 2"
+                size_hint : .3, .075
+                pos_hint: {"x" : 2, "center_y": .3 }
+                background_color: 0,0,0,0
+                back_color: .1, .55, .05, 0
+                on_release: root.Step2(self)
+    AnchorLayout:
+        size: root.width, root.height
+        FloatLayout:
+            size_hint : None, None
+            size: 300,300
+            Label:
+                id: step1_0
+                text: "Personnel Information"
+                bold: True
+                font_size: 20
+                color : 0.1, .55, .05, 0
+                pos_hint: {"x": -1, "y": .3}
+            Label:
+                id: step1_1
+                text : "Please enter your name"
+                color : .04, .1, .17, 0
+                pos_hint: {"x": 1, "y": .2}
+            TextInput:
+                id: step1_2
+                text: ""
+                font_size: 12
+                background_color : .04, .1, .17, 0
+                size_hint : .3, .086
+                pos_hint: {"x": -1, "y": .55}
+                multiline: False
+            Label:
+                id: step1_3
+                text : "Please enter your age"
+                color : .04, .1, .17, 0
+                pos_hint: {"x": 1, "y": -0.02}
+            TextInput:
+                id: step1_4
+                multiline: False
+                text: ""
+                font_size: 12
+                background_color : .04, .1, .17, 0
+                size_hint : .3, .086
+                pos_hint: {"x": -1, "y": .35}
+
+    AnchorLayout:
+        size: root.width, root.height
+        FloatLayout:
+            size: 300,300
+            size_hint: None, None
+            Label:
+                id: General_0
+                text: "Question"
+                font_size: 20
+                color : 0,0,0,0
+                pos_hint: {"x": -1, "y": .35}
+                disabled: True
+            StrokeButton:
+                id: General_1
+                text: "Answer 1"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": 1, "y": .55}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press : root.Check1(self)
+                on_press : root.CheckTest(self)
+            StrokeButton:
+                id: General_2
+                text: "Answer 2"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": -1, "y": .35}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press : root.Check2(self)
+                on_press : root.CheckTest(self)
+            StrokeButton:
+                id: General_3
+                text: "Answer 3"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": 1, "y": .15}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press : root.Check3(self)
+                on_press : root.CheckTest(self)
+    AnchorLayout:
+        size: root.width, root.height
+        FloatLayout:
+            size: 300,300
+            size_hint: None, None
+            Label:
+                id : Reading_StartText
+                text : "Reading Section"
+                bold: True
+                font_size: 20
+                color : 0.1, .55, .05, 0
+                pos_hint : {"x": 1, "y": .3}
+            Label:
+                id : Reading_Information
+                text : "Grammar section is completed.\nNext stage is Reading"
+                color : 0, 0, 0, 0
+                pos_hint : {"x": -1, "y": .15}
+            StrokeButton:
+                id: Reading_StartButton
+                text: "Start Reading Section"
+                color:  0.1, .55, .05, 0
+                size_hint : .7, .125
+                pos_hint: {"x": 1, "y": .15}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press : root.Start_Reading(self)
+            ScrollView:
+                id : Reading_Text
+                do_scroll_x: False
+                do_scroll_y: True
+                pos_hint: {"x": 1, "y": .25}
+                disabled : True
+                opacity : 0
+                Label:
+                    id : Reading_Label
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    padding: 10, 10
+                    text: 'really some amazing text ' * 100
+                    color: 0,0,0,0
+            Label:
+                id : Reading_Question
+                text : "Question ID"
+                pos_hint : {"x" : 1, "y": -.325}
+                color : 0,0,0,0
+            StrokeButton:
+                id: Reading_1
+                text: "Answer 1"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": 1, "y": -.05}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press: root.Reading_Check1(self)
+                on_press: root.CheckReading(self)
+            StrokeButton:
+                id: Reading_2
+                text: "Answer 2"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": -1, "y": -.2}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press: root.Reading_Check2(self)
+                on_press: root.CheckReading(self)
+            StrokeButton:
+                id: Reading_3
+                text: "Answer 3"
+                color: 0,0,0,0
+                size_hint : .7, .125
+                pos_hint: {"x": 1, "y": -0.35}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_press: root.Reading_Check3(self)
+                on_press: root.CheckReading(self)
+    AnchorLayout:
+        size: root.width, root.height
+        FloatLayout:
+            size: 300, 300
+            size_hint: None, None
+            Label:
+                id: step2_0
+                text: "English Grammar Section"
+                bold: True
+                font_size: 20
+                color : 0.1, .55, .05, 0
+                pos_hint: {"x": 1, "y": .25}
+            Label:
+                id: step2_1
+                text : "This section contains 40 grammar \nquestions, you will be given 1 minutes \nfor each question, level of questions \n between beginner and advanced"
+                color : .04, .1, .17, 0
+                pos_hint: {"x": -1, "y": .075}
+            StrokeButton:
+                id: step2_2
+                text: "Ok!"
+                size_hint : .3, .125
+                pos_hint: {"x": 2, "y": .2}
+                background_color: 0,0,0,0
+                back_color :  0.1, .55, .05, 0
+                disabled : True
+                on_release : root.GrammarTestAnimationStart(self)
+
+
+<StrokeButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], self.border_radius)
+            width: 1
+<BackgroundColor@Widget>:
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: root.pos
+<BackgroundLabel@Label+BackgroundColor>:
+    background_color: 0, 0, 0, 0
